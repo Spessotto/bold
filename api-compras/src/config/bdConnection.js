@@ -1,4 +1,4 @@
-const customException = require("../utils/customException");
+const CustomException = require("../utils/customException");
 const Sequelize = require("sequelize");
 
 class bdConnection {
