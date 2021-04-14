@@ -36,6 +36,6 @@ services:
         - ./:/home/node/app
     ports:
         - 5000:5000
-    command: "node src/index"
+    command: "npm run dev"
     depends_on:
         - db
