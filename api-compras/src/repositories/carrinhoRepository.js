@@ -14,9 +14,9 @@ class produtoRepository {
             const produtoCarrinho = produtoCarrinhoModel(conexaoBD);
             
 
-            let retorno = await produtoCarrinho.findAll({
+            let retorno = await carrinho.findAll({
                 include:[{
-                    model: carrinho
+                    model: produtoCarrinho
                 }],
                 // where: {
                 //     statuscarrinho: "open"

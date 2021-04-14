@@ -1,27 +1,32 @@
 const Sequelize = require('sequelize')
 
 module.exports = (sequelize) => {
+  const produtoCarrinhoModel = require('./produtoCarrinhoModel')(sequelize);
 
   const model = sequelize.define('carrinho', {
-    id: {
+    codigo: {
       type: Sequelize.UUID,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      field: "codigo"
     },
-    userid: {
+    cod_user: {
       type: Sequelize.UUID,
       allowNull: false,
-      field: "userId"
+      field: "cod_user"
     },
     statuscarrinho: {
       type: Sequelize.STRING(20),
       allowNull: false,
-      field: "statusCarrinho"
+      field: "statuscarrinho"
     }
   }, {
     freezeTableName: true,
     tableName: 'carrinho'
   })
+
+  //model.belongsTo(produtCarrinhoModel);
+  model.hasMany(produtoCarrinhoModel);
 
   return model;
 }
