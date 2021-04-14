@@ -7,30 +7,22 @@ const conexao = new (require("../config/bdConnection"));
 
 class produtoRepository {
 
-    async getCarrinho() {
+    async getCarrinho(userId) {
         try {
             let conexaoBD = await conexao.connect();
             const carrinho = carrinhoModel(conexaoBD);
             const produtoCarrinho = produtoCarrinhoModel(conexaoBD);
-            
 
-            let retorno = await carrinho.findAll({
+            let retorno = await carrinho.findOne({
                 include:[{
                     model: produtoCarrinho
                 }],
-                // where: {
-                //     statuscarrinho: "open"
-                // }
-            });   
-            
-            // let carrinhoRetorno = await carrinho.findAll({
-            //     where: {
-            //         statuscarrinho: "open"
-            //     }
-            // });   
-
+                where: {
+                    cod_user: userId,
+                    statuscarrinho: "open"
+                }
+            });  
             return retorno;
-
 
         } catch (erro) {
             console.log(erro)

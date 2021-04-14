@@ -25,7 +25,6 @@ module.exports = (sequelize) => {
     tableName: 'carrinho'
   })
 
-  //model.belongsTo(produtCarrinhoModel);
   model.hasMany(produtoCarrinhoModel);
 
   return model;

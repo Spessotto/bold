@@ -4,11 +4,26 @@ const conexao = new (require("../config/bdConnection"));
 
 class produtoService {
 
-    async getCarrinho() {
-        //await conexao.connect();
-        let carrinho = await carrinhoRepository.getCarrinho();
+    async getCarrinho(userId) {
+        let carrinhoRetorno = await carrinhoRepository.getCarrinho(userId);
 
-        //await conexao.disconnect();
+        let carrinho = {
+            shoppingCartId: carrinhoRetorno.codigo,
+            userId: carrinhoRetorno.cod_user
+        }
+
+        let products = [];
+        carrinhoRetorno.produtocarrinhos.forEach(element_product => {
+            let produto = {
+                productid: element_product.codigo,
+                price: element_product.price
+            }
+            products.push(produto);
+        });
+
+        carrinho.totalPrice = products.reduce((total,element) => total + element.price,0);
+        carrinho.totalQuantity = products.length;
+        carrinho.products = products;
         return carrinho;
     }
 

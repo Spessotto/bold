@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
     },
     carrinhoCodigo: {
       type: Sequelize.UUID,
-      field: "codigo",
+      field: "cod_carrinho",
       references: {
         model: 'carrinho',
         key:'codigo'
@@ -20,6 +20,10 @@ module.exports = (sequelize) => {
     cod_product: {
       type: Sequelize.STRING(100),
       field: "cod_product",
+    },
+    price: {
+      type: Sequelize.INTEGER,
+      field: "price",
     }
   }, {
     freezeTableName: true,

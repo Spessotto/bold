@@ -2,7 +2,7 @@ const produtoController = new( require('../controllers/carrinhoController'))
 
 module.exports = function (app) {     
 
-    app.get("/carrinho/:idUsuario", (req, res) => {
+    app.get("/carrinho/:userId", (req, res) => {
         produtoController.getCarrinho(req,res);
     })
 

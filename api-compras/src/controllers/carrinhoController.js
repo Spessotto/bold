@@ -2,9 +2,11 @@ const carrinhoService = new(require('../services/carrinhoService'));
 
 class produtoController {
 
-    async getCarrinho(req, res) {        
-        let listaCarrinho = await carrinhoService.getCarrinho();
-        res.status(200).json({ carrinho: listaCarrinho})
+    async getCarrinho(req, res) {  
+        
+        let userId = req.params.userId;
+        let listaCarrinho = await carrinhoService.getCarrinho(userId);
+        res.status(200).json( listaCarrinho )
     }
 
     async insereProdutoCarrinho(req, res) { 
