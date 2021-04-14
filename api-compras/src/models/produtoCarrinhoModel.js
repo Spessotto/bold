@@ -18,7 +18,8 @@ module.exports = (sequelize) => {
       }
     },
     productId: {
-      type: Sequelize.STRING(100)
+      type: Sequelize.STRING(100),
+      field: "productid",
     }
   }, {
     freezeTableName: true,
