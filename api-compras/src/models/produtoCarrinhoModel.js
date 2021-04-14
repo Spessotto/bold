@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 
 module.exports = (sequelize) => {
+  const carrinhoModel = require('./carrinhoModel')(sequelize);
 
   const model = sequelize.define('produtocarrinho', {
     id: {
@@ -22,7 +23,9 @@ module.exports = (sequelize) => {
   }, {
     freezeTableName: true,
     tableName: 'produtocarrinho'
-  })
+  });
+
+  model.belongsTo(carrinhoModel);
 
   return model;
 }
