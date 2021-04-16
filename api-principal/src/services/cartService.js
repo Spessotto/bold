@@ -79,7 +79,7 @@ class cartService {
 
             const objRequest = {
                 url: `${process.env.URL_BASE_CARTS}/cart/remove`,
-                method: 'POST',
+                method: 'DELETE',
                 json: true,
                 headers: {
                     'Content-Type': 'application/json'

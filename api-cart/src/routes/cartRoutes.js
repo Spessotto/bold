@@ -10,7 +10,7 @@ module.exports = function (app) {
         cartController.insertProductCart(req,res);
     })
 
-    app.post("/cart/remove", (req, res) => {
+    app.delete("/cart/remove", (req, res) => {
         cartController.removeProductCart(req,res);
     })
 
